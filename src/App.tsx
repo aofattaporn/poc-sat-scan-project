@@ -1,11 +1,18 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layoute from "./components/Layoute";
+import UploadPage from "./pages/UploadPage";
 
 function App() {
   return (
     <div className="App">
-      <div className=' bg-slate-500'>
-        <h1>Hello poc-sat-project</h1>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layoute/>}>
+            <Route path="/" element={<UploadPage/>}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
