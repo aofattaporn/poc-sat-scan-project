@@ -1,5 +1,6 @@
 import { SyntheticEvent, FormEvent, useState } from "react";
 import ApplicationDetails from "../types/ApplicationDetail";
+import { previewSatReport } from "../services/previewsService";
 
 export const useCreatApplication = () => {
   const [details, setDetails] = useState<ApplicationDetails>({
@@ -31,5 +32,27 @@ export const useCreatApplication = () => {
     }));
   };
 
-  return { details, handleField, handleSubmit };
+  const sendDataToPreview = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // const {
+    //   appId,
+    //   appName,
+    //   projectOwnerName,
+    //   satTicketId,
+    //   requestDate,
+    //   release,
+    // } = details;
+
+    try {
+      // Send the data to the backend API without using 'params'
+      const response = await previewSatReport(details);
+
+      console.log(response.data); // Assuming the response contains the data you need
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return { details, handleField, handleSubmit, sendDataToPreview };
 };

@@ -2,11 +2,11 @@ import React from "react";
 import { useCreatApplication } from "../libs/useApplicationDetails";
 function UploadPage() {
   // adding custom hook just handeler
-  const { details, handleField, handleSubmit } = useCreatApplication();
+  const { details, handleField, handleSubmit, sendDataToPreview } = useCreatApplication();
 
   return (
     <div className="bg-main-white mx-4 md:mx-60 my-10 p-20 shadow-md">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={sendDataToPreview}>
         <h1 className="text-lg font-bold text-black-primary mb-8">
           Application Details
         </h1>
